@@ -7,5 +7,13 @@
         <mat-error *ngIf="name.dirty && name.invalid && name.errors!['pattern']">Please enter numbers only</mat-error>
         <mat-error *ngIf="name.dirty && name.invalid && name.errors!['min']">Please input positive number above 0</mat-error>
     </mat-form-field>
-    <button type="button" mat-raised-button color="primary" (click)="fetchPost()">Send</button>
+    <button 
+        type="button" 
+        mat-raised-button 
+        color="primary" 
+        (click)="fetchPost()" 
+        [disabled]="name.invalid || (loading$ | async)"
+        [class.spinner]="(loading$ | async)">
+            {{ (loading$ | async) ? 'Loading...' : 'Send' }}
+    </button>
 </div>

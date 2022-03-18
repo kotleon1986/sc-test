@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { FormControl, Validators } from '@angular/forms';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { fetchSinglePost } from 'src/store/posts/posts.actions';
+import { selectPostLoading } from 'src/store/posts/posts.selectors';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +11,8 @@ import { fetchSinglePost } from 'src/store/posts/posts.actions';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public searchForm!: FormGroup
+  public loading$!: Observable<boolean>;
+
   public name = new FormControl('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
@@ -19,7 +22,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private store: Store) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
+    this.loading$ = this.store.pipe(select(selectPostLoading));
   }
 
   fetchPost() {
