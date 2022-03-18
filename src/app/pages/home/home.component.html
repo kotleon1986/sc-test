@@ -1,7 +1,9 @@
 <h1>Scalio Test</h1>
 <div style="margin-bottom: 1rem">
-    <input type="text" [formControl]="name">
-    <div style="color: red" *ngIf="name.dirty && !name.valid">Please enter Post ID</div>
+    <input type="number" min="1" [formControl]="name">
+    <div style="color: red" *ngIf="name.dirty && name.invalid && name.errors!['required']">Please enter Post ID</div>
+    <div style="color: red" *ngIf="name.dirty && name.invalid && name.errors!['pattern']">Invalid number</div>
+    <div style="color: red" *ngIf="name.dirty && name.invalid && name.errors!['min']">Please input positive number above 0</div>
 </div>
 
 <div><button type="button" (click)="onSubmit()" [disabled]="!name.valid">Send</button></div>
