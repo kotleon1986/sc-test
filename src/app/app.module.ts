@@ -11,6 +11,8 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { rootState } from '../store/root.state';
 import { rootEffects } from '../store/root.effects';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResponseInterceptor } from './core/interceptors/response.interceptor';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,18 @@ import { rootEffects } from '../store/root.effects';
     CommonModule,
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(rootState),
     EffectsModule.forRoot(rootEffects)
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
