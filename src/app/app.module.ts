@@ -11,11 +11,13 @@ import { HomeComponent } from './pages/home/home.component';
 
 import { rootState } from '../store/root.state';
 import { rootEffects } from '../store/root.effects';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule,
