@@ -1,9 +1,11 @@
 <h1>Scalio Test</h1>
 <div style="margin-bottom: 1rem">
-    <input type="number" min="1" [formControl]="name">
-    <div style="color: red" *ngIf="name.dirty && name.invalid && name.errors!['required']">Please enter Post ID</div>
-    <div style="color: red" *ngIf="name.dirty && name.invalid && name.errors!['pattern']">Invalid number</div>
-    <div style="color: red" *ngIf="name.dirty && name.invalid && name.errors!['min']">Please input positive number above 0</div>
+    <mat-form-field appearance="fill">
+        <mat-label>Post ID</mat-label>
+        <input type="number" min="1" matInput [formControl]="name" required>
+        <mat-error *ngIf="name.dirty && name.invalid && name.errors!['required']">Please enter Post ID</mat-error>
+        <mat-error *ngIf="name.dirty && name.invalid && name.errors!['pattern']">Please enter numbers only</mat-error>
+        <mat-error *ngIf="name.dirty && name.invalid && name.errors!['min']">Please input positive number above 0</mat-error>
+    </mat-form-field>
+    <button type="button" mat-raised-button color="primary" (click)="fetchPost()">Send</button>
 </div>
-
-<div><button type="button" (click)="onSubmit()" [disabled]="!name.valid">Send</button></div>

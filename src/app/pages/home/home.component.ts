@@ -23,8 +23,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {    
   }
 
-  onSubmit() {
+  fetchPost() {
     if (this.name.valid) {
+      console.log(+this.name.value);
       this.store.dispatch(fetchSinglePost({ id: +this.name.value }));
     }
   }

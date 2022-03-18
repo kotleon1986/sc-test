@@ -1,1 +1,7 @@
-<p>details works!</p>
+<div class="post-data" *ngIf="post$ | async">
+    <h2>Title: {{ (post$ | async)?.title }}</h2>
+    <div>Body: {{ (post$ | async)?.body }}</div>
+    <div>
+        <button mat-button color="secondary" (click)="goBack()">Back</button>
+    </div>
+</div>
