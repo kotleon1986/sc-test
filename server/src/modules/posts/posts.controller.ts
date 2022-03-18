@@ -13,6 +13,12 @@ export class PostsController {
 
   @Get(':id')
   single(@Param() params: GetSinglePostDto) {
+    // Uncomment to test loader
+    // return new Promise((res) => {
+    //   setTimeout(() => {
+    //     res(this.postsService.getPostById(params.id));
+    //   }, 5000);
+    // });
     return this.postsService.getPostById(params.id);
   }
 }

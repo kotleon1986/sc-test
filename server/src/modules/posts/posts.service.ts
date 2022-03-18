@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { PostsRepository } from './repositories/posts.repository';
 import { Post } from './entities/post.entity';
 
@@ -14,6 +18,10 @@ export class PostsService {
     const post: Post = this.postsRepository.findOne(id);
     if (!post) {
       throw new NotFoundException('Post not found');
+    }
+
+    if (!post.title || !post.body) {
+      throw new UnprocessableEntityException('Post is missing some fields');
     }
 
     return post;
