@@ -1,1 +1,7 @@
-<p>home works!</p>
+<h1>Scalio Test</h1>
+<div style="margin-bottom: 1rem">
+    <input type="text" [formControl]="name">
+    <div style="color: red" *ngIf="name.dirty && !name.valid">Please enter Post ID</div>
+</div>
+
+<div><button type="button" (click)="onSubmit()" [disabled]="!name.valid">Send</button></div>
