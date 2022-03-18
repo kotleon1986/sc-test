@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Post } from 'src/app/core/models/post.model';
@@ -11,12 +11,12 @@ import { selectSinglePost } from 'src/store/posts/posts.selectors';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  post$!: Observable<Post>
+  post!: Post;
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.post$ = this.store.pipe(select(selectSinglePost));
+    this.post = this.route.snapshot.data['post'];
   }
   
   goBack() {

@@ -1,7 +1,10 @@
-<div class="post-data" *ngIf="post$ | async">
-    <h2>Title: {{ (post$ | async)?.title }}</h2>
-    <div>Body: {{ (post$ | async)?.body }}</div>
-    <div>
-        <button mat-button color="secondary" (click)="goBack()">Back</button>
-    </div>
-</div>
+<mat-card class="post-card" *ngIf="post">
+    <mat-card-title>{{ post.title }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ post.body }}</p>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button mat-button (click)="goBack()">Go Back</button>
+    </mat-card-actions>    
+</mat-card>

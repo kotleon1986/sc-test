@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { fetchSinglePost } from 'src/store/posts/posts.actions';
 
@@ -10,8 +10,7 @@ import { fetchSinglePost } from 'src/store/posts/posts.actions';
 })
 export class HomeComponent implements OnInit {
   public searchForm!: FormGroup
-  public name = new FormControl(
-    '', [
+  public name = new FormControl('', [
       Validators.required,
       Validators.pattern("^[0-9]*$"),
       Validators.min(1)
@@ -25,7 +24,6 @@ export class HomeComponent implements OnInit {
 
   fetchPost() {
     if (this.name.valid) {
-      console.log(+this.name.value);
       this.store.dispatch(fetchSinglePost({ id: +this.name.value }));
     }
   }

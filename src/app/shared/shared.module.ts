@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ResponseInterceptor } from '../core/interceptors/response.interceptor';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { ResponseInterceptor } from '../core/interceptors/response.interceptor';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+
 
 const modules = [
   CommonModule,
@@ -15,6 +18,8 @@ const modules = [
   MatButtonModule,
   MatSnackBarModule,
   MatInputModule,
+  MatCardModule,
+  MatDividerModule
 ];
 
 @NgModule({
