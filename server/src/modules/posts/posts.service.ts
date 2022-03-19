@@ -16,6 +16,7 @@ export class PostsService {
 
   getPostById(id: number) {
     const post: Post = this.postsRepository.findOne(id);
+
     if (!post) {
       throw new NotFoundException('Post not found');
     }
