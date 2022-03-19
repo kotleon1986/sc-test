@@ -1,0 +1,58 @@
+service: scalio-test-api
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-plugin-warmup
+  - serverless-offline
+  
+custom:
+  serverless-offline:
+    useChildProcesses: true
+    noPrependStageInUrl: true
+    httpPort: 3000
+  warmup:
+    default:
+      enabled: true
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: 'Allow'
+          Action: 'lambda:InvokeFunction'
+          Resource: "*"
+
+functions:
+  posts:
+    warmup: true
+    handler: dist/main.handler
+    events:
+      - httpApi:
+          method: ANY
+          path: /posts
+      - httpApi:
+          method: ANY
+          path: '/posts/{proxy+}'
+
+package:
+  include: 
+   - dist/**
+   - node_modules/**
+   - node_modules/@vendia
+
+  exclude:
+   - src/**
+   - e2e/**
+   - coverage/**
+   - '!node_modules/@vendia/**'
+   - '!node_modules/aws-/**'
+   - '!node_modules/binary-case/**'
+   - '!node_modules/type-is/**'
+   - '!node_modules/media-typer/**'
+   - '!node_modules/mime-types/**'
+   - '!node_modules/mime-db/**'
+
+        
