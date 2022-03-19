@@ -1,27 +1,24 @@
-# ScalioTest
+# Scalio Test
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
-## Development server
+## Installation
+Run `yarn install:dev` to install dependencies for both frontend and backend.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+to install `yarn` globally run `npm i -g yarn`.
 
-## Code scaffolding
+## Local
+Run `yarn start` to concurrently start both applications on local
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Production
+Frontend is available at: https://6235af4012d4cf000809f502--zen-bartik-e8d6bd.netlify.app
+Backend API is available at: https://cnv0msg6hd.execute-api.us-east-1.amazonaws.com/posts
 
-## Build
+### App Description
+The app starts with the home page where the user can input the post ID to search for the post. Once the "Send" button is pressed, the app sends request to the backend API to fetch the post by the specified ID. If post not found or is missing one of the main fields, the API will respond with corresponding error. Once the post data is delivered from the API, the app redirect user to the `/details` page where the both title and the body of the post is shown, along with the "Go Back" button to return to the home page.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Technologies used
+Frontend - Angular 13, Angular Material, NgRx, Jasmine
+Backend - NestJS, Serverless, AWS Lambda, Jest
+Deployment - Netlify, AWS
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
