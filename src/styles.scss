@@ -42,6 +42,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background: mat-color($angular-test-warn);
 }
 
+.full-width {
+  width: 100%;
+}
+
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
