@@ -2,6 +2,7 @@
   "name": "scalio-test",
   "version": "0.0.0",
   "scripts": {
+    "up": "docker-compose -f docker-compose-local.yml up -d",
     "install:dev": "yarn && cd server && yarn",
     "client": "ng serve",
     "server": "cd server && yarn build && ./node_modules/.bin/serverless offline",

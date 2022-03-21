@@ -2,13 +2,17 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
-## Installation
-Run `yarn install:dev` to install dependencies for both frontend and backend.
+## Installation and Running
+To install and run using Docker simply run `yarn up` or `npm run up`  
+
+To install and run on local machine:  
+
+Run `yarn install:dev` to install dependencies for both frontend and backend.  
+
+Run `yarn start` to concurrently start both frontend and backend.
 
 to install `yarn` globally run `npm i -g yarn`.
 
-## Local
-Run `yarn start` to concurrently start both applications on local
 
 ## Production
 Frontend is available at: https://master--zen-bartik-e8d6bd.netlify.app  

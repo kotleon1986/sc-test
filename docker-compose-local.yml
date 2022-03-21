@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+
+  back:
+    build:
+      context: server
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+  
