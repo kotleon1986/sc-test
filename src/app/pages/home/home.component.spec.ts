@@ -33,7 +33,7 @@ describe('HomeComponent', () => {
   });
 
   it('should display test title on top', () => {
-    expect(fixture.nativeElement.querySelector('h1')?.textContent).toContain('Scalio Test');
+    expect(fixture.nativeElement.querySelector('h2')?.textContent).toContain('Scalio Test');
   });
 
   it('should render the "Send" button', () => {
